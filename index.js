@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express from "express";
-import TodoController from "./controllers/todoController.js";
+import router from "./router/index.js";
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
-app.get("/todo", TodoController.getTodo);
+app.use(router);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is listening on port ${process.env.PORT}`);
